@@ -5,8 +5,8 @@ import { TruckService } from './truck.service';
 import { TruckRepository } from './truck.repository';
 
 @Module({
-  imports: [],
   controllers: [TruckController],
   providers: [PrismaService, TruckService, TruckRepository],
+  exports: [TruckService],
 })
 export class TruckModule {}

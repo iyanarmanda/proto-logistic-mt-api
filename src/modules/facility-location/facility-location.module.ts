@@ -11,5 +11,6 @@ import { FacilityLocationRepository } from './facility-location.repository';
     FacilityLocationService,
     FacilityLocationRepository,
   ],
+  exports: [FacilityLocationService],
 })
 export class FacilityLocationModule {}
