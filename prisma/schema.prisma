@@ -1,0 +1,65 @@
+// learn more about Prisma schema file in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "js"
+  importFileExtension = ""
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Truck {
+  id                 Int                 @id @default(autoincrement())
+  truckId            String              @unique @map("truck_id")
+  maintenanceRecords MaintenanceRecord[]
+
+  @@map("truck")
+}
+
+model FacilityLocation {
+  id                 Int                 @id @default(autoincrement())
+  name               String              @unique
+  maintenanceRecords MaintenanceRecord[]
+
+  @@map("facility_location")
+}
+
+// TEMPORARY FOR INIT!
+enum MaintenanceType {
+  Inspection
+  Preventive
+  Repair
+  Tire
+  Brake
+  Engine
+  Transmission
+}
+
+// TEMPORARY FOR INIT!
+enum MaintenanceStatus {
+  Routine
+  Scheduled
+  Emergency
+}
+
+model MaintenanceRecord {
+  id                 Int              @id @default(autoincrement())
+  maintenanceDate    DateTime         @map("maintenance_date") @db.Date
+  odometerReading    Int              @map("odometer_reading")
+  laborHours         Decimal          @map("labor_hours") @db.Decimal(10, 2)
+  laborCost          Decimal          @map("labor_cost") @db.Decimal(10, 2)
+  partCost           Decimal          @map("part_cost") @db.Decimal(10, 2)
+  totalCost          Decimal          @map("total_cost") @db.Decimal(10, 2)
+  downtimeHours      Decimal          @map("downtime_hours") @db.Decimal(10, 2)
+  maintenanceType    String           @map("maintenance_type")
+  serviceDescription String           @map("service_description")
+  truck              Truck            @relation(fields: [truckId], references: [id])
+  truckId            Int
+  facilityLocation   FacilityLocation @relation(fields: [facilityLocationId], references: [id])
+  facilityLocationId Int
+
+  @@map("maintenance_records")
+}
