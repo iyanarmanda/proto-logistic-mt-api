@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from 'nestjs-pino';
+import { PrismaExceptionFilter } from './configs/filters/prisma-exception.filter';
 import { AppModule } from './app.module';
 
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -21,7 +22,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
-  // app.useGlobalFilters(new PrismaExceptionFilter());
+  app.useGlobalFilters(new PrismaExceptionFilter());
 
   const PORT = configService.get<number>('PORT', 3000);
   await app.listen(PORT, '0.0.0.0');

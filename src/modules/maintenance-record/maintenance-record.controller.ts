@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { MaintenanceRecordService } from './maintenance-record.service';
-import { ZodValidationPipe } from '@/common/pipes/zod.pipe';
+import { ZodValidationPipe } from '@/common/pipes/zod-validation.pipe';
 import { createMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
 
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
