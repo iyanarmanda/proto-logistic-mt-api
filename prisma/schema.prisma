@@ -3,7 +3,7 @@
 generator client {
   provider            = "prisma-client"
   output              = "../src/generated/prisma"
-  moduleFormat        = "js"
+  moduleFormat        = "cjs"
   importFileExtension = ""
 }
 
@@ -25,24 +25,6 @@ model FacilityLocation {
   maintenanceRecords MaintenanceRecord[]
 
   @@map("facility_location")
-}
-
-// TEMPORARY FOR INIT!
-enum MaintenanceType {
-  Inspection
-  Preventive
-  Repair
-  Tire
-  Brake
-  Engine
-  Transmission
-}
-
-// TEMPORARY FOR INIT!
-enum MaintenanceStatus {
-  Routine
-  Scheduled
-  Emergency
 }
 
 model MaintenanceRecord {
