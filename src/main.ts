@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from 'nestjs-pino';
+import { CorsConfig } from './configs/cors.config';
 import { PrismaExceptionFilter } from './configs/filters/prisma-exception.filter';
 import { AppModule } from './app.module';
 
@@ -21,6 +22,8 @@ async function bootstrap() {
   app.useLogger(app.get(Logger));
 
   app.setGlobalPrefix('api');
+
+  app.enableCors(CorsConfig(configService));
 
   app.useGlobalFilters(new PrismaExceptionFilter());
 

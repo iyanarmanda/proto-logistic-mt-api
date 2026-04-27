@@ -17,6 +17,8 @@ import { z } from 'zod';
             .default('production'),
 
           DATABASE_URL: z.string(),
+
+          CORS_ORIGIN: z.string(),
         });
         return schema.parse(env);
       },
