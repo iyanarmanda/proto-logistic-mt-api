@@ -1,10 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { ConfigService } from '@nestjs/config';
+import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { Logger } from 'nestjs-pino';
+import { helmetConfig } from './configs/helmet.config';
 import { CorsConfig } from './configs/cors.config';
 import { PrismaExceptionFilter } from './configs/filters/prisma-exception.filter';
 import { AppModule } from './app.module';
+import helmet from '@fastify/helmet';
 
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 
@@ -20,6 +22,8 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.useLogger(app.get(Logger));
+
+  await app.register(helmet, helmetConfig(configService));
 
   app.setGlobalPrefix('api');
 
