@@ -1,6 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { MaintenanceRecordService } from './maintenance-record.service';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 import { ZodValidationPipe } from '@/common/pipes/zod-validation.pipe';
+import { MaintenanceRecordService } from './maintenance-record.service';
 import { createMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
 
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
@@ -12,6 +13,7 @@ export class MaintenanceRecordController {
     private readonly maintenanceRecordService: MaintenanceRecordService,
   ) {}
 
+  @UseGuards(ThrottlerGuard)
   @Post()
   async create(
     @Body(new ZodValidationPipe(createMaintenanceRecordDto))
