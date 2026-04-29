@@ -14,7 +14,7 @@ import { FacilityLocationService } from '@/modules/facility-location/facility-lo
 import { MaintenanceRecordRepository } from './maintenance-record.repository';
 
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
-import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-record.dto';
 import type {
   AIServiceResponse,
   MaintenanceRecordWithAI,

@@ -3,7 +3,7 @@ import { PrismaService } from '@/common/services/prisma.service';
 import { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
 
 import type { MaintenanceRecord } from '@/generated/prisma/client';
-import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-record.dto';
 import type { GetAllResponse } from './interfaces/response.interface';
 
 @Injectable()

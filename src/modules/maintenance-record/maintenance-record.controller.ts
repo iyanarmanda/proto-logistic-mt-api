@@ -3,10 +3,10 @@ import { ThrottlerGuard } from '@nestjs/throttler';
 import { ZodValidationPipe } from '@/common/pipes/zod-validation.pipe';
 import { MaintenanceRecordService } from './maintenance-record.service';
 import { createMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
-import { getAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
+import { getAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-record.dto';
 
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
-import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-record.dto';
 import type {
   AnomalyResponse,
   CreatedResponse,

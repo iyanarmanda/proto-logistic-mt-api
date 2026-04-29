@@ -7,11 +7,11 @@ import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { PinoLogger } from 'nestjs-pino';
 import { of, throwError } from 'rxjs';
-
 import { MaintenanceRecordService } from './maintenance-record.service';
 import { MaintenanceRecordRepository } from './maintenance-record.repository';
 import { TruckService } from '@/modules/truck/truck.service';
 import { FacilityLocationService } from '@/modules/facility-location/facility-location.service';
+
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
 
 describe('MaintenanceRecordService', () => {
