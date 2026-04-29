@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/services/prisma.service';
 import { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
-import { MaintenanceRecord } from '@/generated/prisma/client';
+
+import type { MaintenanceRecord } from '@/generated/prisma/client';
 
 @Injectable()
 export class MaintenanceRecordRepository {
@@ -15,7 +16,7 @@ export class MaintenanceRecordRepository {
         laborHours: body.laborHours,
         laborCost: body.laborCost,
         partCost: body.partCost,
-        totalCost: body.laborCost + body.partCost,
+        totalCost: Number(body.laborCost) + Number(body.partCost),
         downtimeHours: body.downtimeHours,
         maintenanceType: body.maintenanceType,
         serviceDescription: body.serviceDescription,
@@ -29,6 +30,19 @@ export class MaintenanceRecordRepository {
             name: body.facilityLocation,
           },
         },
+      },
+    });
+  }
+
+  async findLatestByTruckId(truckId: string) {
+    return await this.prisma.maintenanceRecord.findFirst({
+      where: {
+        truck: {
+          truckId,
+        },
+      },
+      orderBy: {
+        maintenanceDate: 'desc',
       },
     });
   }

@@ -18,6 +18,8 @@ import { z } from 'zod';
 
           DATABASE_URL: z.string(),
 
+          AI_API_URL: z.string(),
+
           CORS_ORIGIN: z.string(),
         });
         return schema.parse(env);
