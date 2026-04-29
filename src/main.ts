@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { Logger } from 'nestjs-pino';
-import { helmetConfig } from './configs/helmet.config';
 import { CorsConfig } from './configs/cors.config';
 import { PrismaExceptionFilter } from './configs/filters/prisma-exception.filter';
 import { AppModule } from './app.module';
@@ -20,10 +19,14 @@ async function bootstrap() {
   );
 
   const configService = app.get(ConfigService);
+  const NODE_ENV = configService.get<string>('NODE_ENV', 'production');
+  const PORT = configService.get<number>('PORT', 3000);
 
   app.useLogger(app.get(Logger));
 
-  await app.register(helmet, helmetConfig(configService));
+  await app.register(helmet, {
+    contentSecurityPolicy: NODE_ENV === 'development' ? false : undefined,
+  });
 
   app.setGlobalPrefix('api');
 
@@ -31,7 +34,6 @@ async function bootstrap() {
 
   app.useGlobalFilters(new PrismaExceptionFilter());
 
-  const PORT = configService.get<number>('PORT', 3000);
   await app.listen(PORT, '0.0.0.0');
 }
 bootstrap().catch((err) => {
