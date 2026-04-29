@@ -56,6 +56,22 @@ describe('CreateMaintenanceRecordDto', () => {
       );
     });
 
+    it('should fail if maintenanceDate is in the future', () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+      const result = createMaintenanceRecordDto.safeParse({
+        ...validData,
+        maintenanceDate: tomorrowStr,
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.error?.issues[0].message).toBe(
+        'Maintenance Date cannot be in the future',
+      );
+    });
+
     it('should fail if enum fields is not in enum', () => {
       const result = createMaintenanceRecordDto.safeParse({
         ...validData,

@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { PrismaService } from '@/common/services/prisma.service';
 import { TruckModule } from '@/modules/truck/truck.module';
 import { FacilityLocationModule } from '@/modules/facility-location/facility-location.module';
@@ -7,7 +8,7 @@ import { MaintenanceRecordService } from './maintenance-record.service';
 import { MaintenanceRecordRepository } from './maintenance-record.repository';
 
 @Module({
-  imports: [TruckModule, FacilityLocationModule],
+  imports: [HttpModule, TruckModule, FacilityLocationModule],
   controllers: [MaintenanceRecordController],
   providers: [
     PrismaService,

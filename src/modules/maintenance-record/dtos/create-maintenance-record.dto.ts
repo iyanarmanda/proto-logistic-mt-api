@@ -7,7 +7,11 @@ export const createMaintenanceRecordDto = z.strictObject({
   maintenanceDate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'Maintenance Date format must be yyyy-mm-dd')
-    .transform((val) => new Date(val)),
+    .transform((val) => new Date(val))
+    .refine((date) => {
+      const today = new Date();
+      return date <= today;
+    }, 'Maintenance Date cannot be in the future'),
   maintenanceType: z.enum(MAINTENANCE_TYPES),
   odometerReading: z.number().int(),
   laborHours: z
