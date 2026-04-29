@@ -13,11 +13,13 @@ import { TruckService } from '@/modules/truck/truck.service';
 import { FacilityLocationService } from '@/modules/facility-location/facility-location.service';
 import { MaintenanceRecordRepository } from './maintenance-record.repository';
 
+import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
 import type {
   AIServiceResponse,
   MaintenanceRecordWithAI,
 } from './interfaces/ai.interface';
-import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
+import type { GetAllResponse } from './interfaces/response.interface';
 
 @Injectable()
 export class MaintenanceRecordService extends BaseService {
@@ -163,5 +165,19 @@ export class MaintenanceRecordService extends BaseService {
         metadata: aiResponse.metadata,
       },
     };
+  }
+
+  async getAll(
+    query: GetAllQueryMaintenanceRecordDto,
+  ): Promise<GetAllResponse> {
+    const page = query?.page ?? 1;
+    const limit = query?.limit ?? 25;
+
+    return await this.maintenanceRecordRepository.findAllMaintenanceRecords({
+      page,
+      limit,
+      sort: query.sort,
+      filter: query.filter,
+    });
   }
 }

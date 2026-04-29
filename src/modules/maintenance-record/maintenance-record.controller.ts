@@ -1,13 +1,16 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { ThrottlerGuard } from '@nestjs/throttler';
 import { ZodValidationPipe } from '@/common/pipes/zod-validation.pipe';
 import { MaintenanceRecordService } from './maintenance-record.service';
 import { createMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
+import { getAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
 
 import type { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
 import type {
   AnomalyResponse,
   CreatedResponse,
+  GetAllResponse,
 } from './interfaces/response.interface';
 
 @Controller('maintenance')
@@ -35,5 +38,13 @@ export class MaintenanceRecordController {
       message: 'Maintenance recorded successfully',
       data: maintenanceRecord,
     };
+  }
+
+  @Get()
+  async getAll(
+    @Query(new ZodValidationPipe(getAllQueryMaintenanceRecordDto))
+    query: GetAllQueryMaintenanceRecordDto,
+  ): Promise<GetAllResponse> {
+    return await this.maintenanceRecordService.getAll(query);
   }
 }

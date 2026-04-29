@@ -3,6 +3,8 @@ import { PrismaService } from '@/common/services/prisma.service';
 import { CreateMaintenanceRecordDto } from './dtos/create-maintenance-record.dto';
 
 import type { MaintenanceRecord } from '@/generated/prisma/client';
+import type { GetAllQueryMaintenanceRecordDto } from './dtos/get-all-query-maintenance-rercord.dto';
+import type { GetAllResponse } from './interfaces/response.interface';
 
 @Injectable()
 export class MaintenanceRecordRepository {
@@ -45,5 +47,47 @@ export class MaintenanceRecordRepository {
         maintenanceDate: 'desc',
       },
     });
+  }
+
+  async findAllMaintenanceRecords(
+    query: GetAllQueryMaintenanceRecordDto,
+  ): Promise<GetAllResponse> {
+    const { page, limit, sort, filter } = query;
+
+    const skip = (page - 1) * limit;
+
+    const where = filter
+      ? {
+          truck: {
+            truckId: filter,
+          },
+        }
+      : {};
+
+    const [data, totalCount] = await Promise.all([
+      this.prisma.maintenanceRecord.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: {
+          maintenanceDate: sort || 'desc',
+        },
+        include: {
+          truck: true,
+          facilityLocation: true,
+        },
+      }),
+      this.prisma.maintenanceRecord.count({ where }),
+    ]);
+
+    return {
+      data,
+      meta: {
+        totalData: totalCount,
+        totalPages: Math.ceil(totalCount / limit),
+        page,
+        limit,
+      },
+    };
   }
 }
