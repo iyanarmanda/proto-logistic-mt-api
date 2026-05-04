@@ -1,98 +1,366 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<a id="readme-top"></a>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div align="center">
+  <a href="https://github.com/iyanarmanda/proto-logistic-mt-api">
+    <img src="https://cdn.simpleicons.org/nestjs/E0234E" width="120" alt="NestJS Logo" />
+  </a>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<h3 align="center">Main API of the AegisAI</h3>
 
-## Description
+  <p align="center">
+    Digital form for logistic maintenance with AI data automation
+    <br />
+    <a href="https://aegiss-ai.netlify.app"><strong>View Demo »</strong></a>
+    <br />
+    <br />
+  </p>
+</div>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#how-to-use">How to Use</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+  </ol>
+</details>
 
-## Project setup
+## About The Project
 
-```bash
-$ pnpm install
-```
+This project was developed specifically for a **Hackathon**, focusing on streamlining data entry through intelligent digital forms.
 
-## Compile and run the project
+The primary challenge with traditional data input is "data noise" and human error, which often lead to corrupted datasets. This project mitigates these issues by combining rigorous client-side validation with an **AI-powered Data Cleaning** engine to sanitize and normalize inputs before they ever reach the server.
 
-```bash
-# development
-$ pnpm run start
+- Client repository: [https://github.com/virlyputri/lomba-hackathon](https://github.com/virlyputri/lomba-hackathon.git)
+- API repository: [https://github.com/iyanarmanda/proto-logistic-mt-api](https://github.com/iyanarmanda/proto-logistic-mt-api.git)
+- AI repository: [https://github.com/MrRaffs/Aegis_AI_endpoint](https://github.com/MrRaffs/Aegis_AI_endpoint.git)
 
-# watch mode
-$ pnpm run start:dev
+### Built With
 
-# production mode
-$ pnpm run start:prod
-```
+- [NestJS](https://nestjs.com/)
+- [Fastify](https://fastify.dev/)
+- [Prisma ORM](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Zod](https://zod.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-## Run tests
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```bash
-# unit tests
-$ pnpm run test
+## Getting Started
 
-# e2e tests
-$ pnpm run test:e2e
+### Prerequisites
 
-# test coverage
-$ pnpm run test:cov
-```
+- **Node.js** (v22 recommended)
+- **pnpm**
+  ```sh
+  npm install -g pnpm
+  ```
+- **VS Code extension**
+  - **Prisma** by Prisma
+  - **Jest** by Orta
+  - **ESLint** by Microsoft
+  - **Prettier - Code formatter** by Microsoft
+- **Docker** (optional)
 
-## Deployment
+### Installation
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+1. Clone the repo
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+   ```bash
+   git clone https://github.com/iyanarmanda/proto-logistic-mt-api.git
+   ```
 
-```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
-```
+2. Install dependencies
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+   ```bash
+   pnpm install
+   ```
 
-## Resources
+3. Husky preparation
 
-Check out a few resources that may come in handy when working with NestJS:
+   ```bash
+   pnpm prepare
+   ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+4. Environment variables
 
-## Support
+   Create `.env` file in project root. See environment example on `.env.example`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5. Prisma setup
 
-## Stay in touch
+   Create PostgreSQL database. If using docker, create lightweight database image with:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```bash
+   docker compose up -d --build
+   ```
 
-## License
+   After database initiated, run these commands to setup prisma
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+   ```bash
+   # generate prisma client
+   pnpm prisma generate
+
+   # create migration on database
+   pnpm prisma migrate deploy
+   ```
+
+### How to Use
+
+- Development Mode
+
+  ```bash
+  pnpm start:dev
+  ```
+
+- Build & production mode
+
+  ```bash
+  pnpm build
+  pnpm start:prod
+  ```
+
+- Type checking
+
+  ```bash
+  pnpm check
+
+  # or in watch mode
+  pnpm check:watch
+  ```
+
+- Unit testing
+
+  ```bash
+  pnpm test
+  ```
+
+See more on `package.json` scripts
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Usage
+
+- Get all Trucks
+
+  Endpoint:
+  ```http
+  GET /api/truck
+  ```
+
+  Response example (200 OK):
+  ```json
+  [
+    {
+      "id": 1,
+      "truck_id": "TRK00001",
+      "maintenanceRecords": []
+    },
+    {
+      "id": 2,
+      "truck_id": "TRK00002",
+      "maintenanceRecords": []
+    }
+  ]
+  ```
+
+- Get all Facility Locations
+
+  Endpoint:
+  ```http
+  GET /api/facility-location
+  ```
+
+  Response example (200 OK):
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Los Angeles",
+      "maintenanceRecords": []
+    },
+    {
+      "id": 2,
+      "name": "Las Vegas",
+      "maintenanceRecords": []
+    }
+  ]
+  ```
+
+- Create Maintenance Record
+
+  Endpoint:
+  ```http
+  POST /api/maintenance
+  ```
+
+  Payload example:
+  ```json
+  {
+    "truckId": "TRK00001",
+    "maintenanceDate": "2026-05-04",
+    "maintenanceType": "Engine",
+    "odometerReading": 128500,
+    "laborHours": "1.00",
+    "laborCost": "100.00",
+    "partCost": "0.00",
+    "downtimeHours": "1.50",
+    "facilityLocation": "Los Angeles",
+    "service_description": "Routine Engine"
+  }
+  ```
+
+  Success response example:
+  ```json
+  {
+    "message": "Maintenance recorded successfully",
+    "data": {
+      "id": 2,
+      "maintenanceDate": "2026-05-04",
+      "odometerReading": 128500,
+      "laborHours": "1.00",
+      "laborCost": "100.00",
+      "partCost": "0.00",
+      "totalCost": "100.00",
+      "downtimeHours": "1.50",
+      "maintenanceType": "Engine",
+      "serviceDescription": "Routine Engine",
+      "truckId": "TRK00001",
+      "facilityLocationId": 1,
+      "aiAnalysis": {
+        "isAnomaly": false,
+        "anomalyScore": 0.012812971230573942
+      }
+    }
+  }
+  ```
+
+  Anomaly response example:
+  ```json
+  {
+    "message": "Maintenance recorded is marked as an anomaly",
+    "data": {
+      "aiAnalysis": {
+        "isAnomaly": true,
+        "anomalyScore": -0.2361890419571126932
+      }
+    }
+  }
+  ```
+
+- Get all Maintenance Record
+
+  Endpoint:
+  ```http
+  GET /api/maintenance
+  ```
+
+  Response example (200 OK):
+  ```json
+  {
+    "data": [
+      {
+        "id": 1,
+        "maintenanceDate": "2026-05-01",
+        "odometerReading": 125000,
+        "laborHours": "4.50",
+        "laborCost": "450.00",
+        "partCost": "1200",
+        "totalCost": "1650.00",
+        "downtimeHours": "6.00",
+        "maintenanceType": "Preventive",
+        "serviceDescription": "Scheduled Preventive",
+        "truckId": 1,
+        "facilityLocationId": 2,
+        "truck": {
+          "id": 1,
+          "truckId": "TRK00001"
+        },
+        "facility_location": {
+          "id": 2,
+          "name": "Las Vegas"
+        }
+      },
+      {
+        "id": 2,
+        "maintenanceDate": "2026-05-04",
+        "odometerReading": 128500,
+        "laborHours": "1.00",
+        "laborCost": "100.00",
+        "partCost": "0.00",
+        "totalCost": "100.00",
+        "downtimeHours": "1.50",
+        "maintenanceType": "Engine",
+        "serviceDescription": "Routine Engine",
+        "truckId": 1,
+        "facilityLocationId": 1,
+        "truck": {
+          "id": 1,
+          "truckId": "TRK00001"
+        },
+        "facility_location": {
+          "id": 1,
+          "name": "Los Angeles"
+        }
+      }
+    ],
+    "meta": {
+      "totalData": 2,
+      "totalPages": 1,
+      "page": 1,
+      "limit": 25
+    }
+  }
+  ```
+
+  Query schema:
+  |query|type|default|
+  |-----|----|-------|
+  |page|string (number)|1|
+  |limit|string (number)|25|
+  |sort|'asc', 'desc'|'desc'|
+  |filter|string|null|
+
+- AI Service Payload
+
+  Payload example:
+  ```json
+  {
+    "truck_id": "TRK00001",
+    "maintenance_date": "2026-05-04",
+    "service_description": "Routine Engine",
+    "maintenance_type": "Engine",
+    "odometer_reading": 128500,
+    "labor_hours": "1.00",
+    "labor_cost": "100.00",
+    "part_cost": "0.00",
+    "total_cost": "100.00",
+    "facilityLocationId": 1,
+    "downtime_hours": "1.50",
+    "days_since_last": 2
+  }
+  ```
+
+See more on `prisma/schema.prisma` for detailed Prisma Schema.
+
+Another data source:
+
+|Data|path|
+|----|----|
+|`maintenance_type` enum|`./src/modules/maintenance-records/enums/maintenance-type.enum.ts`|
+|`service_description` enum|`./src/modules/maintenance-records/enums/service-description.enum.ts`|
+|`truck` data|`./src/seed/data/truck.data.ts`|
+|`facility_location` data|`./src/seed/data/facility-location.data.ts`|
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
